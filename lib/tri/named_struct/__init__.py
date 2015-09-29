@@ -2,7 +2,7 @@ from tri.declarative import creation_ordered, declarative
 from tri.struct import Struct
 
 
-__version__ = '0.1.0'
+__version__ = '0.2.0'
 
 
 @creation_ordered
@@ -58,7 +58,7 @@ class NamedStruct(Struct):
 
 def named_struct(field_names, typename="NamedStruct"):
 
-    if isinstance(field_names, basestring):
+    if isinstance(field_names, str):
         field_names = field_names.replace(',', ' ').split()
     field_names = map(str, field_names)
     typename = str(typename)

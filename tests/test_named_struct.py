@@ -5,7 +5,7 @@ from tri.named_struct import NamedStruct, NamedStructField, named_struct
 
 
 def test_init():
-    assert named_struct('foo')().keys() == ['foo']
+    assert list(named_struct('foo')().keys()) == ['foo']
     assert sorted(named_struct(['foo', 'bar'])().keys()) == ['bar', 'foo']
     assert sorted(named_struct('foo, bar')().keys()) == ['bar', 'foo']
     assert named_struct('foo, bar')().__class__.__name__ == 'NamedStruct'
