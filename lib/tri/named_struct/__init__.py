@@ -1,11 +1,11 @@
-from tri.declarative.declarative import declarative_member, declarative
+from tri.declarative import creation_ordered, declarative
 from tri.struct import Struct
 
 
 __version__ = '0.1.0'
 
 
-@declarative_member
+@creation_ordered
 class NamedStructField(object):
 
     def __init__(self, default=None):
