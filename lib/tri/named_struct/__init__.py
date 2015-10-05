@@ -2,7 +2,7 @@ from tri.declarative import creation_ordered, declarative
 from tri.struct import Struct
 
 
-__version__ = '0.2.0'
+__version__ = '0.3.0'
 
 
 @creation_ordered
