@@ -1,40 +1,61 @@
-.. image:: https://travis-ci.org/TriOptima/tri.struct.svg?branch=master
-    :target: https://travis-ci.org/TriOptima/tri.struct
-.. image:: http://codecov.io/github/TriOptima/tri.struct/coverage.svg?branch=master
-    :target: http://codecov.io/github/TriOptima/tri.struct?branch=master
+.. image:: https://travis-ci.org/TriOptima/tri.named_struct.svg?branch=master
+    :target: https://travis-ci.org/TriOptima/tri.named_struct
+.. image:: http://codecov.io/github/TriOptima/tri.named_struct/coverage.svg?branch=master
+    :target: http://codecov.io/github/TriOptima/tri.named_struct?branch=master
 
-tri.struct
-==========
+tri.named_struct
+================
 
-tri.struct supplies classes that can be used like dictionaries and as objects with attribute access at the same time. There are three classes:
-
-- Struct: mutable struct
-- FrozenStruct: immutable struct
-- NamedStruct: mutable struct with restrictions on which fields can be present
-
-Some niceties include:
-
-- Predictable repr() so it's easy to write tests
-- Plus operator for Struct (`Struct(a=1) + Struct(b=1) == Struct(a=1, b=1)`)
+tri.named_struct supplies a class that can be used like dictionaries, but with a predefined set of possible key values:
 
 Example
 -------
 
 .. code:: python
 
-    >>> foo = Struct()
-    >>> foo.a = 1
-    >>> foo['a']
-    1
-    >>> foo['a'] = 2
-    >>> foo.a
-    2
+    from tri.named_struct import NamedStruct
+
+    class MyNamedStruct(NamedStruct):
+        foo = NamedStructField()
+        bar = NamedStructField()
+
+    m = MyNamedStruct(17, 42)
+    assert m['foo'] == 17
+    assert m.foo == 17
+    assert m == dict(foo=17, bar=42)
+
+    m.not_foo  # Will raise an AttributeError
+
+
+Default values can be provided:
+
+.. code:: python
+
+    from tri.named_struct import NamedStruct
+
+    class MyNamedStruct(NamedStruct):
+        foo = NamedStructField()
+        bar = NamedStructField()
+        baz = NamedStructField(default='default')
+
+    assert MyNamedStruct(17) == dict(foo=17, bar=None, baz='default')
+
+There is also a functional way to defined a :code:`NamedStruct` subclass:
+
+.. code:: python
+
+    from tri.named_struct import named_struct
+
+    MyNamedStruct = named_struct('foo, bar')
+    m = MyNamedStruct(17, 42)
+    assert m.foo == 17
+    assert m.bar == 42
 
 
 Running tests
 -------------
 
-You need tox installed then just `make test`.
+You need tox installed then just :code:`make test`.
 
 
 License
@@ -46,4 +67,4 @@ BSD
 Documentation
 -------------
 
-http://tristruct.readthedocs.org.
+http://trinamedstruct.readthedocs.org.

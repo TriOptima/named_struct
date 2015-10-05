@@ -7,6 +7,9 @@ __version__ = '0.2.0'
 
 @creation_ordered
 class NamedStructField(object):
+    """
+    Field declaration for :code:`NamedStruct` classes
+    """
 
     def __init__(self, default=None):
         self.default = default
@@ -20,6 +23,9 @@ def _get_members(named_struct):
 
 @declarative(NamedStructField, add_init_kwargs=False)
 class NamedStruct(Struct):
+    """
+    Class extending :code:`tri.struct.Struct` to only allow a defined subset of string keys.
+    """
 
     def __init__(self, *args, **kwargs):
         members = _get_members(self)
@@ -57,6 +63,9 @@ class NamedStruct(Struct):
 
 
 def named_struct(field_names, typename="NamedStruct"):
+    """
+    Procedural way to define a :code:`NamedStruct` subclass, similar to the :code:`named_tuple` builtin.
+    """
 
     if isinstance(field_names, str):
         field_names = field_names.replace(',', ' ').split()
