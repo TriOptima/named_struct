@@ -2,7 +2,7 @@ from tri.declarative import creation_ordered, declarative
 from tri.struct import Struct
 
 
-__version__ = '0.3.0'
+__version__ = '0.4.0'
 
 
 @creation_ordered
@@ -18,7 +18,7 @@ class NamedStructField(object):
 
 def _get_members(named_struct):
     # Fancy getter to not stumble over our own __getitem__ implementation
-    return object.__getattribute__(named_struct, '__class__').Meta.members
+    return object.__getattribute__(named_struct, '__class__').get_declared()
 
 
 @declarative(NamedStructField, add_init_kwargs=False)

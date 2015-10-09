@@ -14,7 +14,7 @@ def test_init():
     assert named_struct('foo, bar', 'SomeName')().__class__.__name__ == 'SomeName'
 
 
-MyNamedStruct = named_struct('foo')
+MyNamedStruct = named_struct('foo', "MyNamedStruct")
 
 
 def test_access():
