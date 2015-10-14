@@ -6,7 +6,7 @@
 tri.named_struct
 ================
 
-tri.named_struct supplies a class that can be used like dictionaries, but with a predefined set of possible key values:
+tri.named_struct supplies a class that can be used like dictionaries, but with a predefined set of possible key values.
 
 Example
 -------

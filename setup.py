@@ -41,7 +41,7 @@ def read_version():
 setup(
     name='tri.named_struct',
     version=read_version(),
-    description='tri.named_struct supplies classes that can be used like dictionaries and as objects with attribute access at the same time',
+    description='tri.named_struct supplies a class that can be used like dictionaries (or via attribute access), but with a predefined set of possible key values',
     long_description=readme + '\n\n' + history,
     author='Johan Lübcke',
     author_email='johan.lubcke@trioptima.com',

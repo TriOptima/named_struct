@@ -1,7 +1,7 @@
 import pytest
 from tri.struct import FrozenStruct
 
-from tri.named_struct import NamedStruct, NamedStructField, named_struct
+from tri.named_struct import NamedStruct, NamedStructField, named_struct, NamedFrozenStruct
 
 
 def test_init():
@@ -126,3 +126,19 @@ def test_inheritance_with_marker_class():
     x = MySubType(foo=1)
 
     assert x.foo == 1
+
+
+def test_named_frozen_struct():
+
+    class F(NamedFrozenStruct):
+        foo = NamedStructField()
+        bar = NamedStructField(default='bar')
+
+    f = F('foo')
+
+    assert {'foo': 'foo', 'bar': 'bar'} == f
+
+    assert f.foo == 'foo'
+
+    with pytest.raises(AttributeError):
+        f.foo = 'fook'  # Read-only
