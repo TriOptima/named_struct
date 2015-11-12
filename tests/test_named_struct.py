@@ -140,5 +140,5 @@ def test_named_frozen_struct():
 
     assert f.foo == 'foo'
 
-    with pytest.raises(AttributeError):
+    with pytest.raises(TypeError):
         f.foo = 'fook'  # Read-only
