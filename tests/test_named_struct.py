@@ -14,10 +14,8 @@ def test_init():
     assert named_struct('foo, bar', 'SomeName')().__class__.__name__ == 'SomeName'
 
 
-MyNamedStruct = named_struct('foo', "MyNamedStruct")
-
-
 def test_access():
+    MyNamedStruct = named_struct('foo', "MyNamedStruct")
     s = MyNamedStruct()
     assert s.foo is None
 
@@ -27,6 +25,7 @@ def test_access():
 
 
 def test_read_constraints():
+    MyNamedStruct = named_struct('foo', "MyNamedStruct")
     s = MyNamedStruct()
     with pytest.raises(AttributeError):
         # noinspection PyStatementEffect
@@ -34,6 +33,7 @@ def test_read_constraints():
 
 
 def test_write_constraints():
+    MyNamedStruct = named_struct('foo', "MyNamedStruct")
     s = MyNamedStruct()
     with pytest.raises(AttributeError):
         # noinspection PyStatementEffect
@@ -46,17 +46,22 @@ def test_constructor():
     assert s == dict(foo=17, bar=42)
 
 
-def test_contstructor_failure():
-    MyNamedStruct = named_struct('foo, bar')
+def test_constructor_failure():
 
-    with pytest.raises(ValueError):
+    class MyNamedStruct(named_struct('foo, bar')):
+        pass
+
+    with pytest.raises(TypeError) as e:
         MyNamedStruct(1, 2, 3)  # Too many args
+    assert "MyNamedStruct() takes at most 2 arguments (3 given)" in str(e)
 
-    with pytest.raises(ValueError):
+    with pytest.raises(TypeError) as e:
         MyNamedStruct(1, foo=2)  # Conflicting value for foo
+    assert "MyNamedStruct() got multiple values for keyword argument 'foo'" in str(e)
 
-    with pytest.raises(KeyError):
+    with pytest.raises(TypeError) as e:
         MyNamedStruct(foo=17, bar=42, boink=25)  # Constraint violation
+    assert "MyNamedStruct() got an unexpected keyword argument 'boink'" in str(e)
 
 
 def test_position_arg_constructor():

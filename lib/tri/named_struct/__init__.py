@@ -25,17 +25,17 @@ def _build_kwargs(self, args, kwargs):
     members = _get_declared(self)
 
     if len(args) > len(members):
-        raise ValueError("Too many arguments")
+        raise TypeError("%s() takes at most %d arguments (%d given)" % (self.__class__.__name__, len(members), len(args)))
 
     values_by_name = dict(zip(members.keys(), args))
     for kwargs_name, value in kwargs.items():
         if kwargs_name in values_by_name:
-            raise ValueError('Field "%s" already given as positional argument' % (kwargs_name, ))
+            raise TypeError("%s() got multiple values for keyword argument '%s'" % (self.__class__.__name__, kwargs_name, ))
         values_by_name[kwargs_name] = value
 
     for kwargs_name in values_by_name:
         if kwargs_name not in members:
-            raise KeyError(kwargs_name)
+            raise TypeError("%s() got an unexpected keyword argument '%s'" % (self.__class__.__name__, kwargs_name))
 
     return {name: values_by_name.get(name, field.default) for name, field in members.items()}
 
