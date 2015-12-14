@@ -1,6 +1,6 @@
 from copy import copy
 from tri.declarative import creation_ordered, declarative
-from tri.struct import Struct, FrozenStruct
+from tri.struct import Struct, Frozen
 
 
 __version__ = '0.7.0'
@@ -46,6 +46,7 @@ class NamedStruct(Struct):
     """
     Class extending :code:`tri.struct.Struct` to only allow a defined subset of string keys.
     """
+    __slots__ = ()
 
     def __init__(self, *args, **kwargs):
         super(NamedStruct, self).__init__(**_build_kwargs(self, args, kwargs))
@@ -75,18 +76,11 @@ def named_struct(field_names, typename="NamedStruct"):
 
 
 @declarative(NamedStructField, add_init_kwargs=False)
-class NamedFrozenStruct(FrozenStruct):
+class NamedFrozenStruct(Frozen, NamedStruct):
     """
     Class extending :code:`tri.struct.FrozenStruct` to only allow a defined subset of string keys.
     """
-
-    def __init__(self, *args, **kwargs):
-        super(NamedFrozenStruct, self).__init__(**_build_kwargs(self, args, kwargs))
-
-    def __getitem__(self, key):
-        if key not in _get_declared(self):
-            raise KeyError(key)
-        return super(NamedFrozenStruct, self).__getitem__(key)
+    pass
 
 
 def named_frozen_struct(field_names, typename='FrozenNamedStruct'):
