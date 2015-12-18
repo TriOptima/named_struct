@@ -3,7 +3,7 @@ from tri.declarative import creation_ordered, declarative
 from tri.struct import Struct, Frozen
 
 
-__version__ = '0.7.0'
+__version__ = '0.8.0'
 
 
 @creation_ordered
