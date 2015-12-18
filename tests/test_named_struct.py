@@ -1,7 +1,7 @@
 import pytest
 from tri.struct import FrozenStruct
 
-from tri.named_struct import NamedStruct, NamedStructField, named_struct, NamedFrozenStruct
+from tri.named_struct import NamedStruct, NamedStructField, named_struct, NamedFrozenStruct, named_frozen_struct
 
 
 def test_init():
@@ -147,3 +147,8 @@ def test_named_frozen_struct():
 
     with pytest.raises(TypeError):
         f.foo = 'fook'  # Read-only
+
+    g = named_frozen_struct('foo, bar')(1, 2)
+    assert g == dict(foo=1, bar=2)
+    with pytest.raises(TypeError):
+        g.foo = 17
