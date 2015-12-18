@@ -2,7 +2,10 @@ from tri.declarative import creation_ordered, declarative
 from tri.struct import Struct, Frozen
 
 
-__version__ = '0.9.0'
+__version__ = '0.10.0'
+
+
+MISSING = object()
 
 
 @creation_ordered
@@ -11,8 +14,17 @@ class NamedStructField(object):
     Field declaration for :code:`NamedStruct` classes
     """
 
-    def __init__(self, default=None):
+    def __init__(self, default=None, default_factory=None):
+        """
+        @param default:Default value to use when not specified in the constructor
+        @param default_factory: Callable used to calculate value to use when not specified in constructor. (May only be specified when no `default` value is given.)
+
+        @type default: object
+        @type default_factory: () -> object
+        """
         self.default = default
+        self.default_factory = default_factory
+        assert default is None or default_factory is None
         super(NamedStructField, self).__init__()
 
 
@@ -21,7 +33,7 @@ def _get_declared(self):
     return object.__getattribute__(self, '__class__').get_declared()
 
 
-def _build_kwargs(self, args, kwargs):
+def _generate_bindings(self, args, kwargs):
     members = _get_declared(self)
 
     if len(args) > len(members):
@@ -37,7 +49,20 @@ def _build_kwargs(self, args, kwargs):
         if kwargs_name not in members:
             raise TypeError("%s() got an unexpected keyword argument '%s'" % (self.__class__.__name__, kwargs_name))
 
-    return {name: values_by_name.get(name, field.default) for name, field in members.items()}
+    for name, field in members.items():
+        value = values_by_name.get(name, MISSING)
+        if value is MISSING:
+            if field.default is not None:
+                value = field.default
+            elif field.default_factory is not None:
+                value = field.default_factory()
+            else:
+                value = None
+        yield name, value
+
+
+def _build_kwargs(self, args, kwargs):
+    return dict(_generate_bindings(self, args, kwargs))
 
 
 @declarative(NamedStructField, add_init_kwargs=False)
