@@ -39,6 +39,10 @@ def test_write_constraints():
         # noinspection PyStatementEffect
         s.bar = 17
 
+    with pytest.raises(KeyError) as e:
+        s['bar']
+    assert "KeyError: 'bar'" in str(e)
+
 
 def test_constructor():
     MyNamedStruct = named_struct('foo, bar')
