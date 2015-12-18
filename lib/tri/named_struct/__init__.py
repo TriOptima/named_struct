@@ -1,9 +1,8 @@
-from copy import copy
 from tri.declarative import creation_ordered, declarative
 from tri.struct import Struct, Frozen
 
 
-__version__ = '0.8.0'
+__version__ = '0.9.0'
 
 
 @creation_ordered
@@ -38,7 +37,7 @@ def _build_kwargs(self, args, kwargs):
         if kwargs_name not in members:
             raise TypeError("%s() got an unexpected keyword argument '%s'" % (self.__class__.__name__, kwargs_name))
 
-    return {name: values_by_name.get(name, copy(field.default)) for name, field in members.items()}
+    return {name: values_by_name.get(name, field.default) for name, field in members.items()}
 
 
 @declarative(NamedStructField, add_init_kwargs=False)

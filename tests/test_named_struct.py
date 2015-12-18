@@ -110,10 +110,8 @@ def test_default_value():
         foo = NamedStructField()
         bar = NamedStructField()
         baz = NamedStructField(default='default')
-        qux = NamedStructField(default={})
 
-    MyNamedStruct(17).qux['foo'] = 'bar'  # make sure default value is immutable
-    assert MyNamedStruct(17) == dict(foo=17, bar=None, baz='default', qux={})
+    assert MyNamedStruct(17) == dict(foo=17, bar=None, baz='default')
 
 
 def test_freeze():
