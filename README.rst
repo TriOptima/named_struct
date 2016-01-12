@@ -40,6 +40,19 @@ Default values can be provided:
 
     assert MyNamedStruct(17) == dict(foo=17, bar=None, baz='default')
 
+
+Default values can alternatively be provided by a factory method:
+
+.. code:: python
+
+    from tri.named_struct import NamedStruct
+
+    class MyNamedStruct(NamedStruct):
+        foo = NamedStructField(default_factory=list)
+
+    assert MyNamedStruct().foo == []
+
+
 There is also a functional way to defined a :code:`NamedStruct` subclass:
 
 .. code:: python

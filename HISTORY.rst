@@ -1,14 +1,7 @@
-=========
 Changelog
 =========
 
-Here's the recent changes to tri.named_struct.
+0.10.0 (2016-01-12)
+~~~~~~~~~~~~~~~~~~~
 
-.. changelog::
-    :version: dev
-    :released: Ongoing
-
-    .. change::
-        :tags: docs
-
-        Updated CHANGES.
+* Added `default_factory` argument to specify default values via a callback.
