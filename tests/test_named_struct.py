@@ -118,6 +118,14 @@ def test_default_value():
     assert MyNamedStruct(17) == dict(foo=17, bar=None, baz='default')
 
 
+def test_default_factory():
+
+    class MyNamedStruct(NamedStruct):
+        foo = NamedStructField(default_factory=list)
+
+    assert MyNamedStruct().foo == []
+
+
 def test_freeze():
     MyNamedStruct = named_struct('foo, bar')
     s = MyNamedStruct(foo=17)
