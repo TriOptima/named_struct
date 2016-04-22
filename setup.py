@@ -67,9 +67,9 @@ class ReleaseCheck(Command):
 # NB: _don't_ add namespace_packages to setup(), it'll break
 #     everything using imp.find_module
 setup(
-    name='tri.named_struct',
+    name='tri.named-struct',
     version=read_version(),
-    description='tri.named_struct supplies a class that can be used like dictionaries (or via attribute access), but with a predefined set of possible key values',
+    description='tri.named-struct supplies a class that can be used like dictionaries (or via attribute access), but with a predefined set of possible key values',
     long_description=readme + '\n\n' + history,
     author='Johan Lübcke',
     author_email='johan.lubcke@trioptima.com',
@@ -80,7 +80,7 @@ setup(
     install_requires=read_reqs('requirements.txt'),
     license="BSD",
     zip_safe=False,
-    keywords='tri.named_struct',
+    keywords='tri.named-struct',
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
         'Intended Audience :: Developers',
