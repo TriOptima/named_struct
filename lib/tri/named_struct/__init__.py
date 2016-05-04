@@ -52,6 +52,8 @@ def _generate_bindings(self, args, kwargs):
     for name, field in members.items():
         value = values_by_name.get(name, MISSING)
         if value is MISSING:
+            if name in self:
+                continue  # This field was set earlier in __init__ call-chain
             if field.default is not None:
                 value = field.default
             elif field.default_factory is not None:

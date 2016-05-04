@@ -164,3 +164,46 @@ def test_named_frozen_struct():
     assert g == dict(foo=1, bar=2)
     with pytest.raises(TypeError):
         g.foo = 17
+
+
+def test_named_struct_subclass_with_constructor():
+    class F(NamedStruct):
+        foo = NamedStructField()
+
+        def __init__(self, **kwargs):
+            super(F, self).__init__(**kwargs)
+
+    assert 17 == F(foo=17).foo
+
+
+def test_named_struct_subclass_with_constructor_override_before_super():
+    class F(NamedStruct):
+        foo = NamedStructField()
+
+        def __init__(self, **kwargs):
+            self.foo = 17
+            super(F, self).__init__(**kwargs)
+
+    assert 17 == F().foo
+
+
+def test_named_struct_subclass_with_constructor_override_before_super_with_explicit():
+    class F(NamedStruct):
+        foo = NamedStructField()
+
+        def __init__(self, **kwargs):
+            self.foo = 17
+            super(F, self).__init__(**kwargs)
+
+    assert 42 == F(foo=42).foo
+
+
+def test_named_struct_subclass_with_constructor_override_after_super():
+    class F(NamedStruct):
+        foo = NamedStructField()
+
+        def __init__(self, **kwargs):
+            super(F, self).__init__(**kwargs)
+            self.foo = 17
+
+    assert 17 == F(foo=42).foo
