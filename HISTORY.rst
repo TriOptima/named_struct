@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.11.0 (----------)
+0.11.0 (2016-05-06)
 ~~~~~~~~~~~~~~~~~~~
 
 * Fix deafult values shadowing values set explicitly in subclass __init__ method.
