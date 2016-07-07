@@ -1,7 +1,7 @@
-.. image:: https://travis-ci.org/TriOptima/tri.named_struct.svg?branch=master
-    :target: https://travis-ci.org/TriOptima/tri.named_struct
-.. image:: http://codecov.io/github/TriOptima/tri.named_struct/coverage.svg?branch=master
-    :target: http://codecov.io/github/TriOptima/tri.named_struct?branch=master
+.. image:: https://travis-ci.org/TriOptima/tri.named-struct.svg?branch=master
+    :target: https://travis-ci.org/TriOptima/tri.named-struct
+.. image:: http://codecov.io/github/TriOptima/tri.named-struct/coverage.svg?branch=master
+    :target: http://codecov.io/github/TriOptima/tri.named-struct?branch=master
 
 tri.named_struct
 ================
