@@ -207,3 +207,13 @@ def test_named_struct_subclass_with_constructor_override_after_super():
             self.foo = 17
 
     assert 17 == F(foo=42).foo
+
+
+def test_inheritance_shadow():
+    class F(NamedStruct):
+        foo = NamedStructField(default='bar')
+
+    class G(F):
+        foo = 'baz'
+
+    assert 'baz' == G().foo
