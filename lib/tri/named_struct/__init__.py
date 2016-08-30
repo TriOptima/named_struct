@@ -2,7 +2,7 @@ from tri.declarative import creation_ordered, declarative
 from tri.struct import Struct, Frozen
 
 
-__version__ = '0.11.0'
+__version__ = '0.12.0'
 
 
 MISSING = object()
