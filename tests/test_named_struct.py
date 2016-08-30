@@ -207,3 +207,30 @@ def test_named_struct_subclass_with_constructor_override_after_super():
             self.foo = 17
 
     assert 17 == F(foo=42).foo
+
+
+def test_inheritance_shadow():
+    class F(NamedStruct):
+        foo = NamedStructField(default='bar')
+
+    class G(F):
+        foo = 'baz'
+
+    assert 'baz' == G().foo
+
+    class H(G):
+        pass
+
+    assert 'baz' == H().foo
+
+
+@pytest.mark.skipif(True, reason="Not yet implemented")
+def test_inheritance_shadow_function():
+    class F(NamedStruct):
+        foo = NamedStructField()
+
+    class G(F):
+        def foo(self, x):
+            return x + 1
+
+    assert 2 == G().foo(1)
