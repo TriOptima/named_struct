@@ -52,13 +52,12 @@ def _generate_bindings(self, args, kwargs):
     for name, field in members.items():
         value = values_by_name.get(name, MISSING)
         if value is MISSING:
-            tmp = getattr(self.__class__, name, MISSING)
-            if not isinstance(tmp, NamedStructField):
-                value = tmp
-        if value is MISSING:
             if name in self:
                 continue  # This field was set earlier in __init__ call-chain
-            if field.default is not None:
+            class_value = getattr(self.__class__, name)
+            if not isinstance(class_value, NamedStructField):
+                value = class_value
+            elif field.default is not None:
                 value = field.default
             elif field.default_factory is not None:
                 value = field.default_factory()
