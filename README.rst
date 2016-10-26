@@ -80,4 +80,4 @@ BSD
 Documentation
 -------------
 
-http://trinamedstruct.readthedocs.org.
+http://trinamed_struct.readthedocs.org.
