@@ -41,7 +41,7 @@ def test_write_constraints():
 
     with pytest.raises(KeyError) as e:
         s['bar']
-    assert "KeyError: 'bar'" in str(e)
+    assert "KeyError('bar',)" == repr(e.value)
 
 
 def test_constructor():
@@ -57,15 +57,15 @@ def test_constructor_failure():
 
     with pytest.raises(TypeError) as e:
         MyNamedStruct(1, 2, 3)  # Too many args
-    assert "MyNamedStruct() takes at most 2 arguments (3 given)" in str(e)
+    assert "MyNamedStruct() takes at most 2 arguments (3 given)" == str(e.value)
 
     with pytest.raises(TypeError) as e:
         MyNamedStruct(1, foo=2)  # Conflicting value for foo
-    assert "MyNamedStruct() got multiple values for keyword argument 'foo'" in str(e)
+    assert "MyNamedStruct() got multiple values for keyword argument 'foo'" == str(e.value)
 
     with pytest.raises(TypeError) as e:
         MyNamedStruct(foo=17, bar=42, boink=25)  # Constraint violation
-    assert "MyNamedStruct() got an unexpected keyword argument 'boink'" in str(e)
+    assert "MyNamedStruct() got an unexpected keyword argument 'boink'" == str(e.value)
 
 
 def test_position_arg_constructor():
@@ -165,6 +165,9 @@ def test_named_frozen_struct():
     with pytest.raises(TypeError):
         g.foo = 17
 
+    # Check default name
+    assert type(g).__name__ == 'FrozenNamedStruct'
+
 
 def test_named_struct_subclass_with_constructor():
     class F(NamedStruct):
@@ -234,3 +237,15 @@ def test_inheritance_shadow_function():
             return x + 1
 
     assert 2 == G().foo(1)
+
+
+def test_attribute_error():
+
+    class MyNamedStruct(NamedStruct):
+        foo = NamedStructField()
+
+    with pytest.raises(AttributeError) as e:
+        m = MyNamedStruct()
+        m.bar = 1
+
+    assert "'MyNamedStruct' object has no attribute 'bar'" == str(e.value)
