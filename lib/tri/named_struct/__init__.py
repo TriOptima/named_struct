@@ -1,5 +1,5 @@
-from tri.declarative import creation_ordered, declarative
-from tri.struct import Struct, Frozen
+from tri_declarative import creation_ordered, declarative
+from tri_struct import Struct, Frozen
 
 
 __version__ = '0.12.0'  # pragma: no mutate
