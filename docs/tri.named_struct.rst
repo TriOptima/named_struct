@@ -1,10 +1,10 @@
-tri.named_struct package
+tri_named_struct package
 ========================
 
 Module contents
 ---------------
 
-.. automodule:: tri.named_struct
+.. automodule:: tri_named_struct
     :members:
     :undoc-members:
     :show-inheritance:
