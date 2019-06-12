@@ -13,7 +13,7 @@ Example
 
 .. code:: python
 
-    from tri.named_struct import NamedStruct
+    from tri_named_struct import NamedStruct
 
     class MyNamedStruct(NamedStruct):
         foo = NamedStructField()
@@ -31,7 +31,7 @@ Default values can be provided:
 
 .. code:: python
 
-    from tri.named_struct import NamedStruct
+    from tri_named_struct import NamedStruct
 
     class MyNamedStruct(NamedStruct):
         foo = NamedStructField()
@@ -45,7 +45,7 @@ Default values can alternatively be provided by a factory method:
 
 .. code:: python
 
-    from tri.named_struct import NamedStruct
+    from tri_named_struct import NamedStruct
 
     class MyNamedStruct(NamedStruct):
         foo = NamedStructField(default_factory=list)
@@ -57,7 +57,7 @@ There is also a functional way to defined a :code:`NamedStruct` subclass:
 
 .. code:: python
 
-    from tri.named_struct import named_struct
+    from tri_named_struct import named_struct
 
     MyNamedStruct = named_struct('foo, bar')
     m = MyNamedStruct(17, 42)

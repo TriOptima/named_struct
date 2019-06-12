@@ -1,8 +1,8 @@
-from tri.declarative import creation_ordered, declarative
-from tri.struct import Struct, Frozen
+from tri_declarative import creation_ordered, declarative
+from tri_struct import Struct, Frozen
 
 
-__version__ = '0.12.0'  # pragma: no mutate
+__version__ = '1.0.0'  # pragma: no mutate
 
 
 MISSING = object()
@@ -73,7 +73,7 @@ def _build_kwargs(self, args, kwargs):
 @declarative(NamedStructField, add_init_kwargs=False)
 class NamedStruct(Struct):
     """
-    Class extending :code:`tri.struct.Struct` to only allow a defined subset of string keys.
+    Class extending :code:`tri_struct.Struct` to only allow a defined subset of string keys.
     """
     __slots__ = ()
 
@@ -107,7 +107,7 @@ def named_struct(field_names, typename="NamedStruct"):
 @declarative(NamedStructField, add_init_kwargs=False)
 class NamedFrozenStruct(Frozen, NamedStruct):
     """
-    Class extending :code:`tri.struct.FrozenStruct` to only allow a defined subset of string keys.
+    Class extending :code:`tri_struct.FrozenStruct` to only allow a defined subset of string keys.
     """
     pass
 

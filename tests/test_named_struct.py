@@ -1,7 +1,7 @@
 import pytest
-from tri.struct import FrozenStruct
+from tri_struct import FrozenStruct
 
-from tri.named_struct import NamedStruct, NamedStructField, named_struct, NamedFrozenStruct, named_frozen_struct
+from tri_named_struct import NamedStruct, NamedStructField, named_struct, NamedFrozenStruct, named_frozen_struct
 
 
 def test_init():
@@ -41,7 +41,7 @@ def test_write_constraints():
 
     with pytest.raises(KeyError) as e:
         s['bar']
-    assert "KeyError('bar',)" == repr(e.value)
+    assert repr(e.value) in ("KeyError('bar',)", "KeyError('bar')")
 
 
 def test_constructor():
