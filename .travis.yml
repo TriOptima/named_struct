@@ -41,7 +41,7 @@ jobs:
         provider: pypi
         user: j_lubcke
         password:
-          secure: avY6WD95XBnoH+wUc6MVhpTia3cf7NXdfDlJapUGnYoSJLB4ISb6ZPG0JUoQ76kcOquKCo09d250H1FcRCsYPkhgFiWTk9L1qGi3tVx65345cwy4sPJn2HDzX/XUkXOT3G+litf7h4P/Z6BcbEy6Wu0kIy9UzCwfHkkTMuC/ZiwyIfbRpX1MJzLzZeuVHVtHLKAweq24rl9VEKxjOM0gd2h82LDMT9IE90s4qwq6iUqUAnU6FA2hy5QC6tAWcl5Rrrhax0y0EeyFnFS4OxsdBP1gFmMvfSLfD1mhqKNNBElf5RSkRcv5NE0jXVi73/UVkbwWibA3nJoYYJPDV+om3moUy/j39w/ERGQL9uBoOQuRO+K/7Ph7G6Xk63dVSRJvbICEc2sUL9j4tjwc+ZiiG3rU5GFvuf4gnPC/hJ/fd0QTaJXQe/f0hwdwovo7SCWP9TmoKsp7b1BnARS3IAb/NMjzzmNg6Xa2Csf1mdgGVPQXckG41syotjowq8Q2IW5IVL4HvHy8QicJUYtlmXfH4s8r+urZWXkX5UbfqaF+6EsR6rw1p0NcHqcO1fbofE/X7EUHgaBub9RGhG1K+nDAPa5oZYmqb9ovU7YnlgEGcKqMW4ifJs/qkiIGNOR8GGHIHeZDNxHdox9TQNSA0YNkUezR8tZxTeM+foD9QhC34RY=
+          secure: KUdsGDam5RYMl8G7hS7RmXURigBnktlUlMDVhzVnGVVMfbivx0Gf/Mk1N0NiithYcQQxQn4i/sR2NuHsLUlrLPngL1/4aycYHUcxsWFxu7TFhDxuPW5qljZrh9hmTQ1s10RpXc8mrZG/cMnls5/F0FYSwhNb2f48tb94ypTzQIlA1Nn1Ns4M+CduvBPne/qGBud2xjNejJx67utV3FF6CoscscWa8UWMS17PHOJzGkODIbhU0tzewmHydF2OwjTzcTI9UGSTxSUDlccF0Fh3UcVYj2WJx00XBdOoTMiFJvssFkNE4hHehxBC1CZ45AvX6GKGResHpwjw4mKMH5nbk0AmqlEumHuV2KDg3LwxgOvX5uao5agdzFnGqwzubdZuIndd5pc3Vj26j+FBMqGpWtUE3EaNuJ6t61NF7CWFS19rnhAh26Q4HzoX/Tx5hL3nag1hvBhLbK3OrEXK2I9FutmUjTKFIJ3yuMKgG0VwLti7ksNr3EYT8K/UZvhV/QAYQ03mBUigPWAW2k9x143XrUrkKbesrn0giJpOAoxZvVCNTTkzPHnfLpYNzo0D192rEZ2iGyiuVUV67+G4maPms4Je1nN81DckX3mTz2sClx+ML5nQhSZIPsHqUFl5E4rlLh8Me/fpa55qfZV04FuETt5Z8xmhxo6iu+U2HVJ4hxQ=
         on:
           tags: true
           repo: TriOptima/tri.named-struct
