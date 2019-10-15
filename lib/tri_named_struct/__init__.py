@@ -1,4 +1,4 @@
-from tri_declarative import creation_ordered, declarative
+from tri_declarative import declarative
 from tri_struct import Struct, Frozen
 
 
@@ -8,7 +8,6 @@ __version__ = '1.0.0'  # pragma: no mutate
 MISSING = object()
 
 
-@creation_ordered
 class NamedStructField(object):
     """
     Field declaration for :code:`NamedStruct` classes
