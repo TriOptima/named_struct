@@ -2,7 +2,7 @@ from tri_declarative import declarative
 from tri_struct import Struct, Frozen
 
 
-__version__ = '1.1.0'  # pragma: no mutate
+__version__ = '1.2.0'  # pragma: no mutate
 
 
 MISSING = object()
