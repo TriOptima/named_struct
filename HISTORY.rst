@@ -1,14 +1,20 @@
 Changelog
 ---------
 
+1.2.0 (2020-04-24)
+~~~~~~~~~~~~~~~~~~
+
+* Upped dependency tri.declarative to 5.x
+
+
 1.1.0 (2019-10-15)
-~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~
 
 * Upped dependency tri.declarative to 4.x
 
 
 1.0.0 (2019-06-10)
-~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~
 
 * Renamed package from `tri.named_struct` to `tri_named_struct`
 
